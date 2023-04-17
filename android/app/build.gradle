@@ -89,15 +89,14 @@ def reactNativeArchitectures() {
 }
 
 android {
-    ndkVersion rootProject.ext.ndkVersion
-
-    compileSdkVersion rootProject.ext.compileSdkVersion
-
+    ndkVersion "25.2.9519653"
+    compileSdkVersion 33
+    buildToolsVersion "33.0.2"
     namespace "com.taskapp"
     defaultConfig {
         applicationId "com.taskapp"
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
+        minSdkVersion 21
+        targetSdkVersion 33
         versionCode 1
         versionName "1.0"
     }
@@ -111,6 +110,12 @@ android {
         }
     }
     signingConfigs {
+        release {
+            storeFile file('namemohamed.keystore')
+            storePassword 'mohamed1234'
+            keyAlias 'aliasmohamed'
+            keyPassword 'mohamed1234'
+        }
         debug {
             storeFile file('debug.keystore')
             storePassword 'android'
@@ -125,7 +130,7 @@ android {
         release {
             // Caution! In production, you need to generate your own keystore file.
             // see https://reactnative.dev/docs/signed-apk-android.
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }

@@ -13,7 +13,7 @@ const Header = () => {
             <Image
                 resizeMode="contain"
                 style={styles.backgroundImage}
-                source={require('../assets/restaurant.png')}
+                source={require('../assets/background_image.jpg')}
             />
             <View style={styles.heartIconWraper}>
                 <Image
