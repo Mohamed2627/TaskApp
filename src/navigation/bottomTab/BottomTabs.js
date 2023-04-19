@@ -3,15 +3,18 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable prettier/prettier */
 import React from 'react';
-import { StyleSheet, Image, Text, View } from 'react-native';
+import { styles } from './bottomTabStyle';
+import { Image, Text, View } from 'react-native';
 // Importing the navigation libs
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Images } from '../../common/images';
+import { Colors } from '../../common/colors';
 
 // Importing our main screens
-import Home from './screens/Home';
-import Reservation from './screens/Reservation';
-import Favourite from './screens/Favourite';
-import Profile from './screens/Profile';
+import Home from '../../screens/home/index';
+import Reservation from '../../screens/Reservations/index';
+import Favourite from '../../screens/favourite/index';
+import Profile from '../../screens/profile/index';
 
 const Tab = createBottomTabNavigator();
 
@@ -21,43 +24,42 @@ const BottomTabs = () => {
       initialRouteName="Home"
       screenOptions={({ route }) => ({
         tabBarShowLabel: false,
-        tabBarStyle: {
-          backgroundColor: 'white',
-          borderTopRightRadius: 17,
-          borderTopLeftRadius: 17,
-          height: 70,
-        },
+        tabBarStyle: styles.tabBarContainer,
       })}
     >
       {/* The screens */}
       <Tab.Screen name="Home" component={Home}
         options={{
+          headerTitleAlign: 'right',
           tabBarIcon: ({ focused }) => (<View style={styles.labelIconContainer}>
             <Image
-              source={require('../assets/Vector3xcopy2.png')}
+              source={Images.homeIcon}
               resizeMode="contain"
               style={focused ? styles.focusedIcon : styles.unfocusedIcon}
             />
             <View style={styles.labelContainer}>
               <Text style={focused ? styles.focusedLabel : styles.unfocusedLabel}> Home </Text>
-              <View style={focused ? { backgroundColor: '#ff8223', width: 20, height: 2 } : {}} />
+              <View style={focused ? { backgroundColor: Colors.secondaryColor, width: 20, height: 2 } : {}} />
             </View>
           </View>),
-
         }}
       />
       <Tab.Screen name="Reservation" component={Reservation}
         options={{
           title: 'Your Reservation',
+          headerTitleAlign: 'right',
+          headerStyle: {
+            backgroundColor: '#ededef',
+          },
           tabBarIcon: ({ focused }) => (<View style={styles.labelIconContainer}>
             <Image
-              source={require('../assets/Vector3xcopy3.png')}
+              source={Images.reservationIcon}
               resizeMode="contain"
               style={focused ? styles.focusedIcon : styles.unfocusedIcon}
             />
             <View style={styles.labelContainer}>
               <Text style={focused ? styles.focusedLabel : styles.unfocusedLabel}> Reservation </Text>
-              <View style={focused ? { backgroundColor: '#ff8223', width: 20, height: 2 } : {}} />
+              <View style={focused ? { backgroundColor: Colors.secondaryColor, width: 20, height: 2 } : {}} />
             </View>
           </View>),
 
@@ -65,16 +67,16 @@ const BottomTabs = () => {
       />
       <Tab.Screen name="Favourite" component={Favourite}
         options={{
-          // title: 'Welcome',
+          headerTitleAlign: 'right',
           tabBarIcon: ({ focused }) => (<View style={styles.labelIconContainer}>
             <Image
-              source={require('../assets/Vector3xcopy4.png')}
+              source={Images.favouriteIcon}
               resizeMode="contain"
               style={focused ? styles.focusedIcon : styles.unfocusedIcon}
             />
             <View style={styles.labelContainer}>
               <Text style={focused ? styles.focusedLabel : styles.unfocusedLabel}> Favourite </Text>
-              <View style={focused ? { backgroundColor: '#ff8223', width: 20, height: 2 } : {}} />
+              <View style={focused ? { backgroundColor: Colors.secondaryColor, width: 20, height: 2 } : {}} />
             </View>
           </View>),
 
@@ -82,54 +84,53 @@ const BottomTabs = () => {
       />
       <Tab.Screen name="Profile" component={Profile}
         options={{
-          // title: 'Welcome',
+          headerTitleAlign: 'right',
           tabBarIcon: ({ focused }) => (<View style={styles.labelIconContainer}>
             <Image
-              source={require('../assets/Vector3xcopy5.png')}
+              source={Images.profileIcon}
               resizeMode="contain"
               style={focused ? styles.focusedIcon : styles.unfocusedIcon}
             />
             <View style={styles.labelContainer}>
               <Text style={focused ? styles.focusedLabel : styles.unfocusedLabel}> Profile </Text>
-              <View style={focused ? { backgroundColor: '#f9a915', width: 20, height: 2 } : { width: 0 }} />
+              <View style={focused ? { backgroundColor: Colors.secondaryColor, width: 20, height: 2 } : { width: 0 }} />
             </View>
           </View>),
-
         }}
       />
     </Tab.Navigator>
   );
 };
 
-const styles = StyleSheet.create({
-  labelIconContainer: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    width: 90,
-    height: 50,
-  },
-  labelContainer: {
-    alignItems: 'center',
-  },
-  unfocusedLabel: {
-    fontSize: 15,
-    color: '#553586',
-  },
-  focusedLabel: {
-    color: '#ff8223',
-    fontWeight: 'bold',
-  },
-  focusedIcon: {
-    width: 25,
-    height: 25,
-    tintColor: '#ff8223',
-  },
-  unfocusedIcon: {
-    width: 20,
-    height: 20,
-    tintColor: '#553586',
-  },
-});
+// const styles = StyleSheet.create({
+//   labelIconContainer: {
+//     display: 'flex',
+//     flexDirection: 'column',
+//     alignItems: 'center',
+//     width: 90,
+//     height: 50,
+//   },
+//   labelContainer: {
+//     alignItems: 'center',
+//   },
+//   unfocusedLabel: {
+//     fontSize: 12,
+//     color: Colors.secondaryColor,
+//   },
+//   focusedLabel: {
+//     color: Colors.secondaryColor,
+//     fontWeight: 'bold',
+//   },
+//   focusedIcon: {
+//     width: 16,
+//     height: 15,
+//     tintColor: Colors.secondaryColor,
+//   },
+//   unfocusedIcon: {
+//     width: 15,
+//     height: 15,
+//     tintColor: Colors.secondaryColor,
+//   },
+// });
 
 export default BottomTabs;

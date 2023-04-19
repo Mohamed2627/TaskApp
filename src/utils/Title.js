@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
+import { Colors } from '../common/colors';
 
 const Title = ({ brand, place }) => {
     // console.log(props)
@@ -23,12 +24,12 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     brand: {
-        color: '#553586',
-        fontSize: 30,
+        color: Colors.primaryColor,
+        fontSize: 17,
         fontWeight: 'bold',
     },
     place: {
-        fontSize: 15,
+        fontSize: 11,
         marginLeft: 6,
         color: '#180732',
     },

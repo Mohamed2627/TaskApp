@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
 import { Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { Colors } from '../common/colors';
 
 const ReReserveButton = () => {
     return (
@@ -14,16 +15,16 @@ const ReReserveButton = () => {
 
 const styles = StyleSheet.create({
     rereservButton: {
-        backgroundColor: '#553586',
-        width: 100,
-        height: 40,
+        backgroundColor: Colors.primaryColor,
+        width: 80,
+        height: 35,
         alignItems: 'center',
         justifyContent: 'center',
-        borderRadius: 10,
+        borderRadius: 5,
     },
     text: {
         color: 'white',
-        fontSize: 15,
+        fontSize: 12,
     },
 });
 
