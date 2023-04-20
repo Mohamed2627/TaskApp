@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { StyleSheet } from 'react-native';
-import { Colors } from '../../common/images';
+import { Colors } from '../../common/colors';
 
 export const styles = StyleSheet.create({
     tabBarContainer: {

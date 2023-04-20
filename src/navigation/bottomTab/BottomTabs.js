@@ -102,35 +102,5 @@ const BottomTabs = () => {
   );
 };
 
-// const styles = StyleSheet.create({
-//   labelIconContainer: {
-//     display: 'flex',
-//     flexDirection: 'column',
-//     alignItems: 'center',
-//     width: 90,
-//     height: 50,
-//   },
-//   labelContainer: {
-//     alignItems: 'center',
-//   },
-//   unfocusedLabel: {
-//     fontSize: 12,
-//     color: Colors.secondaryColor,
-//   },
-//   focusedLabel: {
-//     color: Colors.secondaryColor,
-//     fontWeight: 'bold',
-//   },
-//   focusedIcon: {
-//     width: 16,
-//     height: 15,
-//     tintColor: Colors.secondaryColor,
-//   },
-//   unfocusedIcon: {
-//     width: 15,
-//     height: 15,
-//     tintColor: Colors.secondaryColor,
-//   },
-// });
 
 export default BottomTabs;

@@ -10,7 +10,8 @@ import Upcoming from './upcoming/Upcoming';
 import Previous from './previous/Previous';
 import { fetchPosts } from '../../state/postsSlice';
 import { useDispatch, useSelector } from 'react-redux';
-
+import { Divider } from '@rneui/themed';
+import { Colors } from '../../common/colors';
 
 const deviceWidth = Dimensions.get('window').width;
 
@@ -34,10 +35,23 @@ const Reservation = () => {
     }, [dispatch]);
 
     const renderItem = ({ item }) => (
-        <Previous data={item} />
+        <>
+            <Previous data={item} />
+        </>
     );
 
-    const renderFooter = () => {
+    const handleEmpty = () => {
+        if (!loading && data.length === 0)
+        {
+            return (
+                <View style={{
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                }}>
+                    <Text> No data present!</Text>
+                </View>
+            );
+        }
         if (!loading) return null;
         return (
             <View style={{
@@ -48,30 +62,46 @@ const Reservation = () => {
             </View>
         );
     };
+    const listHeaderComponent = () => {
+        return (
+            <Text style={styles.declareWord}>
+                Previous
+            </Text>
+        );
+    };
+    const separator = () => {
+        return <Divider color={Colors.secondaryColor} />;
+    };
 
     return (
         <View style={styles.screenWraper}>
-            <View style={styles.container}>
-                <Text style={styles.declareWord}>
-                    Upcoming
-                </Text>
-                <Header />
-                <Upcoming />
-                <Text style={styles.declareWord}>
-                    Previous
-                </Text>
-                <View style={{
-                    flex: 1,
-                    width: '100%',
-                }}>
-                    <FlatList
-                        data={data}
-                        renderItem={renderItem}
-                        keyExtractor={(item) => item.id}
-                        ListFooterComponent={renderFooter}
-                    />
-                </View>
-            </View>
+            <FlatList
+                data={[{ key: 'whole-screen' }]}
+                renderItem={() => (
+                    <View style={styles.container}>
+                        <Text style={styles.declareWord}>
+                            Upcoming
+                        </Text>
+                        <Header />
+                        <Upcoming />
+                        <View style={{
+                            flex: 1,
+                            width: '100%',
+                        }}>
+                            <FlatList
+                                ListEmptyComponent={handleEmpty}
+                                ListHeaderComponent={listHeaderComponent}
+                                data={data}
+                                renderItem={renderItem}
+                                keyExtractor={(item) => item.id}
+                                maxToRenderPerBatch={10}
+                                ItemSeparatorComponent={separator}
+                            />
+                        </View>
+                    </View>
+                )}
+                keyExtractor={(item) => item.key}
+            />
         </View>
     );
 };
@@ -80,7 +110,6 @@ const styles = StyleSheet.create({
     screenWraper: {
         flex: 1,
         alignItems: 'center',
-        // backgroundColor: 'red',
     },
     container: {
         flex: 1,

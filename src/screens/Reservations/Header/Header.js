@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
-import { Images } from '../common/images';
+import { Images } from '../../../common/images';
 import { styles } from './headerStyle';
 import {
     View,
